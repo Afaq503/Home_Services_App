@@ -14,8 +14,8 @@ const Header = () => {
           <View style={styles.profilecontainer}>
             <Image source={{ uri: user?.imageUrl }} style={styles.UserImage} />
             <View>
-              <Text style={{ color: colors.WHITE }}>Welcome</Text>
-              <Text style={{ color: colors.WHITE, fontSize: 20 }}>
+              <Text style={{ color: colors.WHITE,fontFamily:'outfit' }}>Welcome</Text>
+              <Text style={{ color: colors.WHITE, fontSize: 20,fontFamily:'outfit-medium' }}>
                 {user?.fullName}
               </Text>
             </View>
@@ -70,7 +70,8 @@ const styles = StyleSheet.create({
     backgroundColor: colors.WHITE,
     borderRadius: 8,
     width: "85%",
-    fontSize:16
+    fontSize:16,
+    fontFamily:'outfit',
   },
   searchbtn:{
     backgroundColor:colors.WHITE,
