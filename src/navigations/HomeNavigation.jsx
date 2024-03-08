@@ -4,11 +4,12 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Home from '../screens/Home';
 import BusinessListByCategory from '../screens/BusinessListByCategory';
 
-const Stack = createStackNavigator();
 
 const HomeNavigation = () => {
+    const Stack = createStackNavigator();
+
   return (
-    <Stack.Navigator>
+    <Stack.Navigator screenOptions={{headerShown:false}}>
         <Stack.Screen name='Home' component={Home}/>
         <Stack.Screen name='BusinessListByCategory' component={BusinessListByCategory}/>
     </Stack.Navigator>
