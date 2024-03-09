@@ -146,10 +146,39 @@ const createBooking = async (data) => {
 // }
 
 //   `;
-//   const result = await request(MASTER_URL, mutationQuery);
+  // const result = await request(MASTER_URL, mutationQuery);
 
-//   return result;
+  // return result;
 // };
+const getUserBooking = async (userEmail) => {
+  const query = gql `
+  query GetUserBookings {
+    bookings(orderBy: updatedAt_DESC, where: {userEmail: "`+userEmail+`"}) {
+      time
+      userEmail
+      userName
+      bookingStatus
+      date
+      id
+    }
+    businessLists {
+      id
+      images {
+        url
+      }
+      email
+      contactPerson
+      address
+      name
+      about
+    }
+  }
+  
+  `
+  const result = await request(MASTER_URL, query);
+
+  return result;
+}
 
 export default {
   getSlider,
@@ -157,4 +186,5 @@ export default {
   getBusinessList,
   getBusinessListByCategory,
   createBooking,
+  getUserBooking
 };

@@ -1,10 +1,12 @@
-import { View, Text, Image, StyleSheet } from "react-native";
+import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
 import React from "react";
 import colors from "../utils/colors";
+import { useNavigation } from "@react-navigation/native";
 
 const BusinessListItemSamll = ({ business }) => {
+  const navigation = useNavigation()
   return (
-    <View style={styles.container}>
+    <TouchableOpacity onPress={() => navigation.push('BusinessDetails',{business:business})} style={styles.container}>
       <Image style={styles.image} source={{ uri: business?.images[0]?.url }} />
 
       <View style={styles.infoContainer}>
@@ -29,7 +31,7 @@ const BusinessListItemSamll = ({ business }) => {
           {business?.category.name}
         </Text>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 const styles = StyleSheet.create({

@@ -1,17 +1,15 @@
 import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
 import React from "react";
 import colors from "../utils/colors";
-import { Ionicons } from "@expo/vector-icons";
+import { Ionicons, AntDesign } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 
-const BusinessListItem = ({ business }) => {
+const BusinessListItem = ({ business, booking }) => {
   const navigation = useNavigation();
 
   return (
     <TouchableOpacity
-      onPress={() =>
-        navigation.push("BusinessDetails", { business: business })
-      }
+      onPress={() => navigation.push("BusinessDetails", { business: business })}
       style={styles.container}
     >
       <Image source={{ uri: business?.images[0]?.url }} style={styles.image} />
@@ -19,10 +17,10 @@ const BusinessListItem = ({ business }) => {
         <Text
           style={{ fontFamily: "outfit", color: colors.GRAY, fontSize: 15 }}
         >
-          {business.contactPerson}
+          {business?.contactPerson}
         </Text>
         <Text style={{ fontFamily: "outfit-bold", fontSize: 19 }}>
-          {business.name}
+          {business?.name}
         </Text>
         <Text
           style={{
@@ -32,8 +30,25 @@ const BusinessListItem = ({ business }) => {
           }}
         >
           <Ionicons name="location" size={20} color={colors.PRIMARY} />
-          {business.address}
+          {business?.address}
         </Text>
+        {booking?.id ? (
+          <Text
+            style={{
+              fontFamily: "outfit",
+              color: colors.PRIMARY,
+              fontSize: 16,
+            }}
+          >
+            <AntDesign
+              name="calendar"
+              size={24}
+              color={colors.PRIMARY}
+              style={{ marginRight:15 }}
+            />
+            {booking.date} at {booking.time}
+          </Text>
+        ) : null}
       </View>
     </TouchableOpacity>
   );
