@@ -1,11 +1,19 @@
-import { View, Text, Image, StyleSheet } from "react-native";
+import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
 import React from "react";
 import colors from "../utils/colors";
 import { Ionicons } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 
 const BusinessListItem = ({ business }) => {
+  const navigation = useNavigation();
+
   return (
-    <View style={styles.container}>
+    <TouchableOpacity
+      onPress={() =>
+        navigation.push("BusinessDetails", { business: business })
+      }
+      style={styles.container}
+    >
       <Image source={{ uri: business?.images[0]?.url }} style={styles.image} />
       <View style={styles.subContaner}>
         <Text
@@ -17,17 +25,17 @@ const BusinessListItem = ({ business }) => {
           {business.name}
         </Text>
         <Text
-          style={{ fontFamily: "outfit-medium", color: colors.GRAY, fontSize: 16 }}
+          style={{
+            fontFamily: "outfit-medium",
+            color: colors.GRAY,
+            fontSize: 16,
+          }}
         >
-          <Ionicons
-            name="location"
-            size={20}
-            color={colors.PRIMARY}
-          />
-                 {business.address}
+          <Ionicons name="location" size={20} color={colors.PRIMARY} />
+          {business.address}
         </Text>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 
