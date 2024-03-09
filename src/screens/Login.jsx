@@ -39,23 +39,25 @@ const Login = () => {
         <Text
           style={{ fontSize: 27, color: colors.WHITE, textAlign: "center" }}
         >
-          Let's Find
+          Let's Find {''}
           <Text style={{ fontWeight: "bold" }}>
             Professional Cleaning and repair
           </Text>
-          Service
-          <Text
+          {' '} Service
+          
+        </Text>
+        <Text
             style={{
               fontSize: 10,
               color: colors.WHITE,
               textAlign: "center",
               marginTop: 20,
+              fontFamily:'outfit'
             }}
           >
             Best App to find services near you which deliver you a professional
             service
           </Text>
-        </Text>
         <TouchableOpacity style={styles.button}
         onPress={ onPress}
         >
