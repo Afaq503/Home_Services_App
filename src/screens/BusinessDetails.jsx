@@ -6,6 +6,7 @@ import {
   StyleSheet,
   ScrollView,
   Modal,
+  Linking,
 } from "react-native";
 import React, { useEffect, useState } from "react";
 import { useNavigation, useRoute } from "@react-navigation/native";
@@ -23,6 +24,11 @@ const BusinessDetails = () => {
   const [ showModal, setShowModal] = useState(false)
 
   const navigation = useNavigation();
+
+  const onMessageBtnClick = () => {
+    console.log('this is press able');
+    Linking.openURL('mailto:'+business?.email+"?subject= I am looking for your Service&body=Hi There")
+  }
 
   useEffect(() => {}, [param]);
   return (
@@ -120,7 +126,7 @@ const BusinessDetails = () => {
         <View
           style={{ display: "flex", flexDirection: "row", margin: 10, gap: 10 }}
         >
-          <TouchableOpacity style={styles.messageBtn}>
+          <TouchableOpacity onPress={() => onMessageBtnClick() } style={styles.messageBtn}>
             <Text
               style={{
                 textAlign: "center",

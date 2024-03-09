@@ -19,7 +19,7 @@ const TabNavigation = () => {
       }}
     >
       <Tab.Screen
-        name="HomeNavigation"
+        name="Home"
         component={HomeNavigation}
         options={{
           tabBarLabel: ({ color }) => (
